@@ -14,6 +14,21 @@
       "MIMode": "lldb",
       "preLaunchTask": "Build solve.cpp",
       "miDebuggerPath": "/usr/bin/lldb"
+    },
+    {
+      "name": "Run solution (No Debug, Integrated Terminal)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/codeforce/solve",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "preLaunchTask": "Build solve.cpp",
+      "miDebuggerPath": "/usr/bin/lldb",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
