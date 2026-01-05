@@ -157,29 +157,44 @@ int lcm(int a, int b)
 }
 
 void solve() {
-   ll a,b;
-   cin>>a>>b;
-   if(a>b) swap(a,b);
-   ll ans=0;
-   for(ll i=1,j=0;i<=mx;i*=2,j++){
-    if(j%2==0){
-        if(a>=i){
-            a-=i;
+    ll a, b;
+    cin >> a >> b;
+
+    ll ans = 0, ans1 = 0;
+
+    // Case 1: a starts
+    {
+        ll A = a, B = b;
+        for (ll i = 1, j = 0; ; i <<= 1, j++) {
+            if (j % 2 == 0) {
+                if (A < i) break;
+                A -= i;
+            } else {
+                if (B < i) break;
+                B -= i;
+            }
             ans++;
         }
-        else break;
-    }
-    else{
-        if(b>=i){
-            b-=i;
-            ans++;
-        }
-        else break;
     }
 
-   }
-   cout<<ans<<endl;
+    // Case 2: b starts
+    {
+        ll A = a, B = b;
+        for (ll i = 1, j = 0; ; i <<= 1, j++) {
+            if (j % 2 == 0) {
+                if (B < i) break;
+                B -= i;
+            } else {
+                if (A < i) break;
+                A -= i;
+            }
+            ans1++;
+        }
+    }
+
+    cout << max(ans, ans1) << "\n";
 }
+
 /*Read the damn question carefully,show base case*/
 int main()
 {
