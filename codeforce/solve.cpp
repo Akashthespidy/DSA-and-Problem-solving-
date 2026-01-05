@@ -157,18 +157,29 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    string s;
-    cin>>s;
-    ll n=s.size();
-    ll count0=0,count1=0;
-    for(ll i=0;i<n;i++){
-        if(s[i]=='Y') count0++;
-        else count1++;  }
-    if(count0<2) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+   ll a,b;
+   cin>>a>>b;
+   if(a>b) swap(a,b);
+   ll ans=0;
+   for(ll i=1,j=0;i<=mx;i*=2,j++){
+    if(j%2==0){
+        if(a>=i){
+            a-=i;
+            ans++;
+        }
+        else break;
+    }
+    else{
+        if(b>=i){
+            b-=i;
+            ans++;
+        }
+        else break;
+    }
 
+   }
+   cout<<ans<<endl;
 }
-
 /*Read the damn question carefully,show base case*/
 int main()
 {
