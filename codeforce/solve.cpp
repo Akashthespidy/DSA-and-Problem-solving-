@@ -157,42 +157,35 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    ll a, b;
-    cin >> a >> b;
-
-    ll ans = 0, ans1 = 0;
-
-    // Case 1: a starts
+    int n,m,i,j,l=0,c1=1,p,t,max;
+    cin>>n;
+    int a[n];
+    for(i=0; i<n; i++)
     {
-        ll A = a, B = b;
-        for (ll i = 1, j = 0; ; i <<= 1, j++) {
-            if (j % 2 == 0) {
-                if (A < i) break;
-                A -= i;
-            } else {
-                if (B < i) break;
-                B -= i;
+        cin>>a[i];
+    }
+    cin>>m;
+    int b;
+    while(m--){
+cin>>b;
+        for(i=0; i<n; i++)
+        {
+            if(b%a[i]==0)
+            {
+                p=b/a[i];
+                if(p>l)
+                {
+                    l=p;
+                    c1=1;
+                }
+                else if(p==l)
+                    c1++;
+                break;
             }
-            ans++;
+
         }
     }
-
-    // Case 2: b starts
-    {
-        ll A = a, B = b;
-        for (ll i = 1, j = 0; ; i <<= 1, j++) {
-            if (j % 2 == 0) {
-                if (B < i) break;
-                B -= i;
-            } else {
-                if (A < i) break;
-                A -= i;
-            }
-            ans1++;
-        }
-    }
-
-    cout << max(ans, ans1) << "\n";
+    cout<<c1;
 }
 
 /*Read the damn question carefully,show base case*/
@@ -203,7 +196,7 @@ int main()
     cout.tie(0);
     ll t=1;
     //prime();
-    cin>>t;
+    //cin>>t;
     while(t--)
         solve();
     return 0;
