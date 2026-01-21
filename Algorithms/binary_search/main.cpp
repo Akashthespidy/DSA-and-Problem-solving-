@@ -1,0 +1,1 @@
+//binary search used to find an element in a sorted array with time complexity O(log n)
