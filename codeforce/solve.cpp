@@ -157,35 +157,15 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    int n,m,i,j,l=0,c1=1,p,t,max;
+    ll n;
     cin>>n;
-    int a[n];
-    for(i=0; i<n; i++)
-    {
-        cin>>a[i];
-    }
-    cin>>m;
-    int b;
-    while(m--){
-cin>>b;
-        for(i=0; i<n; i++)
-        {
-            if(b%a[i]==0)
-            {
-                p=b/a[i];
-                if(p>l)
-                {
-                    l=p;
-                    c1=1;
-                }
-                else if(p==l)
-                    c1++;
-                break;
-            }
-
-        }
-    }
-    cout<<c1;
+    vector<ll>arr(n);
+    for(ll i=0;i<n;i++)
+        cin>>arr[i];
+    sort(arr.begin(),arr.end());
+    ll ans=n*arr[n-1];
+    
+    cout<<ans<<endl;
 }
 
 /*Read the damn question carefully,show base case*/
@@ -196,7 +176,7 @@ int main()
     cout.tie(0);
     ll t=1;
     //prime();
-    //cin>>t;
+    cin>>t;
     while(t--)
         solve();
     return 0;
