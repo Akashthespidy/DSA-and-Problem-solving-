@@ -157,19 +157,11 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for(auto &i : a) {
-        cin >> i;
-    }
-
-    vector<int> cnt(n + 1);
-    for(auto i : a) cnt[i]++;
-
-    if(cnt[0] == 0) cout << "NO\n";
-    else if(cnt[1] > 0) cout << "YES\n";
-    else cout << (cnt[0] == 1? "YES" : "NO") << '\n';
+    int s, k, m;
+        cin >> s >> k >> m;
+        
+        if (s <= k) cout << max(0, s - m % k) << '\n';
+	else cout << (((m % (2 * k)) < k) ? s - m % k : k - m % k) << '\n';
 }
 
 /*Read the damn question carefully,show base case*/
