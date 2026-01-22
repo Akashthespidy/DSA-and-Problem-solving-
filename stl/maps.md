@@ -7,3 +7,5 @@
 Include the headers `#include <map>` and `#include <unordered_map>`.
 
 Choose `std::map` when you require ordered traversal or strict logarithmic guarantees; choose `std::unordered_map` for faster average-case lookups when ordering is not required.
+
+#pair can be used in map but not unorder map , also in map string , string time complexity is n\*logn. where n is the size of the string.
