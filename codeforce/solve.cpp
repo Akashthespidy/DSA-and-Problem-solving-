@@ -157,15 +157,19 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    ll n;
-    cin>>n;
-    vector<ll>arr(n);
-    for(ll i=0;i<n;i++)
-        cin>>arr[i];
-    sort(arr.begin(),arr.end());
-    ll ans=n*arr[n-1];
-    
-    cout<<ans<<endl;
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(auto &i : a) {
+        cin >> i;
+    }
+
+    vector<int> cnt(n + 1);
+    for(auto i : a) cnt[i]++;
+
+    if(cnt[0] == 0) cout << "NO\n";
+    else if(cnt[1] > 0) cout << "YES\n";
+    else cout << (cnt[0] == 1? "YES" : "NO") << '\n';
 }
 
 /*Read the damn question carefully,show base case*/
