@@ -157,11 +157,26 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    int s, k, m;
-        cin >> s >> k >> m;
-        
-        if (s <= k) cout << max(0, s - m % k) << '\n';
-	else cout << (((m % (2 * k)) < k) ? s - m % k : k - m % k) << '\n';
+    ll n;
+    cin>>n;
+    vector<pair<ll,ll>>v;
+    ll l=INT_MAX,r=0;
+    for(ll i=0;i<n;i++){
+        ll a,b;
+        cin>>a>>b;
+        l=min(a,l);
+        r=max(r,b);
+        v.push_back({a,b});
+    }
+    ll ans=-1;
+    for(ll i=0;i<n;i++){
+        if(l==v[i].first && r==v[i].second){
+            cout<<i+1<<endl;
+            return;
+        }
+    }
+    cout<<ans;
+    
 }
 
 /*Read the damn question carefully,show base case*/
@@ -172,7 +187,7 @@ int main()
     cout.tie(0);
     ll t=1;
     //prime();
-    cin>>t;
+    //cin>>t;
     while(t--)
         solve();
     return 0;
