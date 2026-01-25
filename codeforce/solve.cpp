@@ -155,38 +155,33 @@ int lcm(int a, int b)
 {
     return (a / gcd_int(a, b)) * b;
 }
+bool check(long long mid, long long k, long long n) {
+    if (k == 1) return mid >= n;            // handle k==1 (if needed)
+    long long sum = 0;
+    long long cur = mid;
+    while (cur > 0) {
+        sum += cur;
+        if (sum >= n) return true;         // early exit
+        cur /= k;                          // divide by k each iteration
+    }
+    return sum >= n;
+}
 
 void solve() {
-    int n, a, b, x, y, x1, y1, r_n, l_n, lo_n, u_n, mn, cnt = 0;
-	cin >> n;
-    vector<pair<ll,ll>>v;
-	
-	for(int i = 0; i < n; i++){
-		cin >> a >> b;
-		
-		v.push_back(make_pair(a, b));
-	}
-	int l = v.size();
-	
-	for(int i = 0; i < l; i++){
-		x = v[i].first; y = v[i].second;
-		
-		r_n = 0; l_n = 0; lo_n = 0; u_n = 0;
-		
-		for(int j = 0; j < l; j++){
-			x1 = v[j].first; y1 = v[j].second;
-			
-			if(x1 > x && y1 == y) r_n++;
-			else if(x1 < x && y1 == y) l_n++;
-			else if(x1 == x && y1 < y) lo_n++;
-			else if(x1 == x && y1 > y) u_n++;
-		}
-		mn = min(r_n, min(l_n, min(lo_n, u_n)));
-		if(mn >= 1) cnt++;
-	}
-	cout << cnt << endl;
-    
-    
+    long long n, k;
+    cin >> n >> k;
+    long long ans = n;
+    long long l = 0, r = n;
+    while (l <= r) {
+        long long mid = l + (r - l) / 2;
+        if (check(mid, k, n)) {
+            ans = mid;
+            r = mid - 1;   
+        } else {
+            l = mid + 1;   
+        }
+    }
+    cout << ans;
 }
 
 /*Read the damn question carefully,show base case*/
