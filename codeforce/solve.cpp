@@ -157,25 +157,35 @@ int lcm(int a, int b)
 }
 
 void solve() {
-    ll n;
-    cin>>n;
+    int n, a, b, x, y, x1, y1, r_n, l_n, lo_n, u_n, mn, cnt = 0;
+	cin >> n;
     vector<pair<ll,ll>>v;
-    ll l=INT_MAX,r=0;
-    for(ll i=0;i<n;i++){
-        ll a,b;
-        cin>>a>>b;
-        l=min(a,l);
-        r=max(r,b);
-        v.push_back({a,b});
-    }
-    ll ans=-1;
-    for(ll i=0;i<n;i++){
-        if(l==v[i].first && r==v[i].second){
-            cout<<i+1<<endl;
-            return;
-        }
-    }
-    cout<<ans;
+	
+	for(int i = 0; i < n; i++){
+		cin >> a >> b;
+		
+		v.push_back(make_pair(a, b));
+	}
+	int l = v.size();
+	
+	for(int i = 0; i < l; i++){
+		x = v[i].first; y = v[i].second;
+		
+		r_n = 0; l_n = 0; lo_n = 0; u_n = 0;
+		
+		for(int j = 0; j < l; j++){
+			x1 = v[j].first; y1 = v[j].second;
+			
+			if(x1 > x && y1 == y) r_n++;
+			else if(x1 < x && y1 == y) l_n++;
+			else if(x1 == x && y1 < y) lo_n++;
+			else if(x1 == x && y1 > y) u_n++;
+		}
+		mn = min(r_n, min(l_n, min(lo_n, u_n)));
+		if(mn >= 1) cnt++;
+	}
+	cout << cnt << endl;
+    
     
 }
 
