@@ -28,4 +28,7 @@ int main() {
     return 0;
 }
 // it retuens the index if the element is found
-// if not found it returns the index where it can be inserted to keep the array sorted
+// if not found it returns the index where it can be inserted to keep the array 
+//set and maps is not like logn it is n logn because of 
+// s.lower_bound(val); it internally uses tree data structure
+// so it takes logn time for each operation and there are n operations
