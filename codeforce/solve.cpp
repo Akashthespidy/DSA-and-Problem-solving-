@@ -158,22 +158,15 @@ int lcm(int a, int b)
 
 
 void solve() {
-    ll n,k;
-    cin>>n>>k;
-    for(ll i=0;i<n;i++)cin>>a[i];
-    sort(a,a+n);
-    if(n==1){
-        cout<<0<<endl;
-        return;
+    ll n;
+    cin>>n;
+    for(ll i=2;i<31;i++){
+        ll t=(1LL<<i)-1;
+        if(n%t==0){
+            cout<<n/t<<endl;
+            return;
+        }
     }
-    ll ma=0;
-    ll t=1;
-    for(ll i=1;i<n;i++){
-        if(a[i]-a[i-1]<=k)t++;
-        else ma=max(ma,t),t=1;
-    }
-    ma=max(ma,t);
-    cout<<n-ma;
     cout<<endl;
 }
 
