@@ -155,33 +155,26 @@ int lcm(int a, int b)
 {
     return (a / gcd_int(a, b)) * b;
 }
-bool check(long long mid, long long k, long long n) {
-    if (k == 1) return mid >= n;            // handle k==1 (if needed)
-    long long sum = 0;
-    long long cur = mid;
-    while (cur > 0) {
-        sum += cur;
-        if (sum >= n) return true;         // early exit
-        cur /= k;                          // divide by k each iteration
-    }
-    return sum >= n;
-}
+
 
 void solve() {
-    long long n, k;
-    cin >> n >> k;
-    long long ans = n;
-    long long l = 0, r = n;
-    while (l <= r) {
-        long long mid = l + (r - l) / 2;
-        if (check(mid, k, n)) {
-            ans = mid;
-            r = mid - 1;   
-        } else {
-            l = mid + 1;   
-        }
+    ll n,k;
+    cin>>n>>k;
+    for(ll i=0;i<n;i++)cin>>a[i];
+    sort(a,a+n);
+    if(n==1){
+        cout<<0<<endl;
+        return;
     }
-    cout << ans;
+    ll ma=0;
+    ll t=1;
+    for(ll i=1;i<n;i++){
+        if(a[i]-a[i-1]<=k)t++;
+        else ma=max(ma,t),t=1;
+    }
+    ma=max(ma,t);
+    cout<<n-ma;
+    cout<<endl;
 }
 
 /*Read the damn question carefully,show base case*/
@@ -192,7 +185,7 @@ int main()
     cout.tie(0);
     ll t=1;
     //prime();
-    //cin>>t;
+    cin>>t;
     while(t--)
         solve();
     return 0;
