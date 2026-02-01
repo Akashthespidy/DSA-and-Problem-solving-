@@ -158,22 +158,21 @@ int lcm(int a, int b)
 
 
 void solve() {
-    ll n,q;
-    cin>>n>>q;
-    for(ll i=0;i<n;i++)cin>>a[i];
-    ll sum=0;
-    for(ll i=1;i<n;i++)a[i]+=a[i-1];
-    while(q--){
-        ll l,r,k;
-        cin>>l>>r>>k;
-        ll f=a[l-2];
-        ll b=a[n-1]-a[r-1];
-        ll m=(r-l+1)*k;
-        sum=f+b+m;
-        if(sum%2)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    map<string ,int>m;
+    string ans="";
+    ll t=0;
+    for(ll i=1;i<n;i++){
+        string s1 = s.substr(i-1, 2);
+        m[s1]++;
+        if(m[s1]>t)ans=s1,t=m[s1];
+
     }
-    //cout<<endl;
+cout<<ans;
+    cout<<endl;
 }
 
 /*Read the damn question carefully,show base case*/
@@ -184,7 +183,7 @@ int main()
     cout.tie(0);
     ll t=1;
     //prime();
-    cin>>t;
+    //cin>>t;
     while(t--)
         solve();
     return 0;
